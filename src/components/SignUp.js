@@ -36,6 +36,9 @@ function SignUp(){
                     navigate('/signin')
             }
         })
+        .catch((err)=>{
+            console.log("Error in signup file" ,err);
+        })
 
     } 
 

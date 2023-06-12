@@ -6,7 +6,7 @@ function NavBar(){
             <nav>
                 <div className="nav-wrapper">
                 <Link to="#" className="brand-logo left ">Chatgram</Link>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <ul id="nav-mobile" className="right ">
                     <li><Link to="/signin">Signin</Link></li>
                     <li><Link to="/signup">SignUp</Link></li>
                     <li><Link to="/createpost">Create post</Link></li>

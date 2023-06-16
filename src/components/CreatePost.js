@@ -49,6 +49,7 @@ const CreatePost=()=>{
         data.append("file",image)
         data.append("upload_preset","insta-clone")
         data.append("cloud_name","diap8ejji")
+
         fetch("https://api.cloudinary.com/v1_1/diap8ejji/image/upload",{
             method:"post",
             body:data

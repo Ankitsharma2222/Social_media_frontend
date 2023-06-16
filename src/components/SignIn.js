@@ -1,11 +1,13 @@
 import React from "react"
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import M from "materialize-css";
+import { UserContext } from "../App";
 
 function Signin(){
-
+    const {state,dispatch}=useContext(UserContext)
     const navigate=useNavigate();
     const [email,setemail]=useState("");
     const [password,setpassword]=useState("");
@@ -31,9 +33,9 @@ function Signin(){
                 M.toast({html: data.error,classes:"#c62828 red darken-3"})
             }
             else{
+                dispatch({type:"USER",payload:data.user})
                 localStorage.setItem("jwt",data.token)
                 localStorage.setItem("user",JSON.stringify(data.user))
-                console.log(data.token)
                 M.toast({html:"Sign in Successfully",classes:"#43a047 green darken-1"})
                 navigate('/')
             }
@@ -49,7 +51,7 @@ function Signin(){
                 <div className="card auth-card input-field">
                     <h2 className="brand-logo">Chatgram</h2>
                     <input type="text" placeholder="email" value={email} onChange={(e)=>setemail(e.target.value)}/>
-                    <input type="text" placeholder="password" value={password} onChange={(e)=>setpassword(e.target.value)} />
+                    <input type="password" placeholder="password" value={password} onChange={(e)=>setpassword(e.target.value)} />
                     <button className="btn waves-effect waves-light #4a148c purple darken-4" type="submit" name="action"  onClick={handlesubmit}>
                         Login
                     </button>

@@ -137,18 +137,20 @@ const deletePost = (postId)=>{
     return (
         <>
             <div className="home">
-                {console.log(data)}
                 { data.length >0 ? data.map((item)=>{
                     return (
                         <div className="card home-card">
-                            <h5 style={{padding:"5px"}}><Link to={item.postedBy._id !== state._id?"/profile/"+item.postedBy._id :"/profile"  }>{item.postedBy.name}</Link> {item.postedBy._id == state._id 
-                            && <i className="material-icons" style={{
-                                float:"right"
-                            }} 
-                            onClick={()=>deletePost(item._id)}
-                            >delete</i>
+                            <div >
 
-                            }</h5>
+                                <h5 style={{padding:"5px"}}><Link to={item && state && item.postedBy._id !== state._id?"/profile/"+item.postedBy._id :"/profile"  }>{item.postedBy.name}</Link> {item && state && item.postedBy._id == state._id 
+                                && <i className="material-icons" style={{
+                                    float:"right"
+                                }} 
+                                onClick={()=>deletePost(item && item._id)}
+                                >delete</i>
+
+                                }</h5>
+                            </div>
 
 
                         <div className="card-image">
@@ -156,7 +158,7 @@ const deletePost = (postId)=>{
                         </div>
                         <div className="card-content">
                             <i className="material-icons" style={{color:"red"}}>favorite</i>
-                            {item.likes.includes(state._id) ?
+                            {item && state && item.likes.includes(state._id) ?
                             <i className="material-icons" style={{color:"black"}} onClick={()=>unlike(item._id)} >thumb_down</i>
                             :
                             <i className="material-icons" style={{color:"black"}}  onClick={()=>like(item._id)} >thumb_up</i>

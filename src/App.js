@@ -10,7 +10,9 @@ import Login from './components/SignIn';
 import Profile from './components/Profile';
 import SignUp from './components/SignUp';
 import CreatePost from './components/CreatePost';
+import OtherUserProfile from './components/OtherUserProfile';
 import {Intialstate, reducer, userReducer} from "./reducers/userReducer"
+import MyFollowingPost from './components/MyfollowingPosts';
 
 export const UserContext=createContext()
 
@@ -24,7 +26,7 @@ const Routing=()=>{
     }
     else{
       dispatch({type:"USER" , payload:user})
-      // navigate("/")
+      navigate("/")
     }
   },[])
   return (
@@ -32,8 +34,11 @@ const Routing=()=>{
           <Route path='/'  element={<><Home/></>} />
           <Route path='/signup'  element={<><SignUp/></>} />
           <Route path='/signin'  element={<><Login/></>} />
-          <Route path='/profile'  element={<><Profile/></>} />
+          <Route exact path='/profile'  element={<><Profile/></>} />
+          <Route path='/profile/:userId'  element={<><OtherUserProfile/></>} />
           <Route path='/createpost'  element={<><CreatePost/></>} />
+          <Route path='/myfollowingsposts'  element={<><MyFollowingPost/></>} />
+
 
 
         </Routes>

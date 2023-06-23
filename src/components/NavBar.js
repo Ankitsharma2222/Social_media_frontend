@@ -11,12 +11,14 @@ function NavBar(){
             return  [
                     <li><Link to="/createpost">Create post</Link></li>,
                     <li><Link to="/profile">Profile</Link></li>,
+                    <li><Link to="/myfollowingsposts">Following Posts</Link></li>,
+
                     <li>
                         <button className="btn waves-effect waves-light #4a148c purple darken-4" type="submit" name="action"  
                         onClick={()=>{
-                            localStorage.clear()
                             dispatch({type:"CLEAR"})
                             navigate("/signin")
+                            localStorage.clear()
 
                         }}
                         >

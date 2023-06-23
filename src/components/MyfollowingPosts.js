@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import Loading from "./loadingPage";
 
 
-function Home(){
+function Explore(){
     const {state ,dispatch}=useContext(UserContext)
     const [data,setdata]=useState([])
 
 //------------------------------------------------------------------------------------------------------------------
     
     useEffect(()=>{
-        fetch("http://localhost:5000/allposts",{
+        fetch("http://localhost:5000/myfollowingsposts",{
             method:"get",
             headers:{
                 "Authorization":"Bearer "+localStorage.getItem("jwt")
@@ -189,6 +189,4 @@ const deletePost = (postId)=>{
         </>
     )
 }
-export default Home;
-
-
+export default Explore;

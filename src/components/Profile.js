@@ -14,7 +14,9 @@ function Profile(){
             }
         }).then((res)=>res.json())
         .then((result)=>{
-            console.log(result.myposts)
+            console.log(result)
+            console.log(state)
+
             result.myposts.reverse()
             setpost(result.myposts)
         })
@@ -30,12 +32,16 @@ function Profile(){
                     </div>
                     <div>
                         <h4>{state ? state.name : "Loading"}</h4>
+
+                        {state ?
                         <div style={{display:"flex" , width:"110%" , justifyContent:"space-between "}}>
-                            <h6>10 posts</h6>
-                            <h6>10 follower</h6>
-                            <h6>10 following</h6>
+                            <h6>{post ? post.length : 0 } posts</h6>
+                            <h6>{state.followers.length} follower</h6>
+                            <h6>{state.following.length } following</h6>
 
                         </div>
+                            : "Loading...."
+                            }
                     </div>
 
                 </div>

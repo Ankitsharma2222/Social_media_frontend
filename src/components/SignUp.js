@@ -10,7 +10,7 @@ function SignUp(){
     const [name,setname]=useState("");
     const [email,setemail]=useState("");
     const [password,setpassword]=useState("");
-    const [profileUrl,setprofileUrl]=useState("");
+    const [profileUrl,setprofileUrl]=useState(undefined);
     const [image,setimage]=useState("")
 
 
@@ -18,7 +18,7 @@ function SignUp(){
         if(profileUrl){
             UploadUser();
         }
-    })
+    } , [profileUrl])
 
     const uploadImg=()=>{
         const data=new FormData()
